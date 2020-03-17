@@ -62,8 +62,7 @@ CREATE TABLE customer (
     last_name       VARCHAR(50) NOT NULL,
     address         VARCHAR(100) NOT NULL,
     gender          VARCHAR(1) COMMENT 'M -> male F -> femail. This field can be optional',
-    marital_status  VARCHAR(1) NOT NULL COMMENT 'M -> married S -> single W -> widow/widower',
-    customer_type   VARCHAR(1) NOT NULL
+    marital_status  VARCHAR(1) NOT NULL COMMENT 'M -> married S -> single W -> widow/widower'
 );
 
 /* Moved to CREATE TABLE
