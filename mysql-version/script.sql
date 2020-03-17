@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
 CREATE TABLE auto_customer (
     customer_id     VARCHAR(1) NOT NULL,
     first_name      VARCHAR(50) NOT NULL,
@@ -18,9 +20,6 @@ CREATE TABLE auto_installment_payment (
     invoice_number      DECIMAL(20) NOT NULL
 );
 
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN auto_installment_payment.method_of_payment IS
-    'paypal, credit, debit, check'; */
 
 ALTER TABLE auto_installment_payment ADD CONSTRAINT auto_payment_pk PRIMARY KEY ( transaction_number );
 
@@ -43,10 +42,6 @@ CREATE TABLE auto_insurance_policy (
 P -> expired'
 );
 
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN auto_insurance_policy.auto_insurance_status IS
-    'C -> current
-P -> expired'; */
 
 ALTER TABLE auto_insurance_policy ADD CONSTRAINT auto_insurance_policy_pk PRIMARY KEY ( policy_number );
 
@@ -62,11 +57,6 @@ O -> ownership',
     policy_number  DECIMAL(30) NOT NULL
 );
 
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN auto_insured.auto_status IS
-    'L -> lease
-F -> finance
-O -> ownership'; */
 
 ALTER TABLE auto_insured ADD CONSTRAINT auto_insured_pk PRIMARY KEY ( auto_id );
 
@@ -93,13 +83,6 @@ CREATE TABLE home_customer (
     policy_number   DECIMAL(30) NOT NULL
 );
 
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_customer.gender IS
-    'M -> male F -> femail. This field can be optional'; */
-
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_customer.marital_status IS
-    'M -> married S -> single W -> widow/widower'; */
 
 ALTER TABLE home_customer ADD CONSTRAINT customer_pk PRIMARY KEY ( customer_id );
 
@@ -109,9 +92,6 @@ CREATE TABLE home_installment_payment (
     method_of_payment   VARCHAR(6) NOT NULL COMMENT 'Paypal, credit, debit, check'
 );
 
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_installment_payment.method_of_payment IS
-    'Paypal, credit, debit, check'; */
 
 ALTER TABLE home_installment_payment ADD CONSTRAINT home_installment_pk PRIMARY KEY ( transaction_number );
 
@@ -133,9 +113,6 @@ CREATE TABLE home_insurance_policy (
     home_insurance_status  VARCHAR(1) NOT NULL COMMENT 'C -> current P -> expired'
 );
 
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_insurance_policy.home_insurance_status IS
-    'C -> current P -> expired'; */
 
 ALTER TABLE home_insurance_policy ADD CONSTRAINT home_insurance_pk PRIMARY KEY ( policy_number );
 
@@ -162,45 +139,14 @@ null -> No swimming pool ',
     policy_number           DECIMAL(30) NOT NULL
 );
 
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_insured.home_area IS
-    'in sqrt ft'; */
-
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_insured.type_of_home IS
-    'S -> single family
-M -> Multifamily
-C -> Condominium
-T -> Town House'; */
-
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_insured.auto_fire_notification IS
-    '1 -> There is automatic fire notification to the fire department
-0 -> There is NO fire notification to the fire department'; */
-
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_insured.home_security_system IS
-    '1 -> The home security system is installed and monitored 
-0 -> The home security system is not installed or not monitored'; */
-
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_insured.swimming_pool IS
-    'U -> Underground swimming pool
-O -> Overground swimming pool
-I -> Indoor swimming pool
-M -> Multiple swimming pool
-null -> No swimming pool '; */
-
-/* Moved to CREATE TABLE
-COMMENT ON COLUMN home_insured.basement IS
-    '1 -> There is a basement
-0 -> There is NO basement'; */
 
 ALTER TABLE home_insured ADD CONSTRAINT home_insured_pk PRIMARY KEY ( home_id );
 
 ALTER TABLE auto_customer
     ADD CONSTRAINT auto_custome_fk FOREIGN KEY ( policy_number )
-        REFERENCES auto_insurance_policy ( policy_number );
+        REFERENCES auto_insurance_policy ( policy_number )
+        ON DELETE NO ACTION ON UPDATE NO ACTION
+        AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 ALTER TABLE auto_insurance_invoice
     ADD CONSTRAINT auto_installment_payment_fk FOREIGN KEY ( transaction_number )
