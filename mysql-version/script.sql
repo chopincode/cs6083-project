@@ -1,181 +1,86 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
-CREATE TABLE auto_customer (
-    customer_id     VARCHAR(1) NOT NULL,
-    first_name      VARCHAR(50) NOT NULL,
-    last_name       VARCHAR(50) NOT NULL,
-    address         VARCHAR(100) NOT NULL,
-    gender          VARCHAR(1),
-    marital_status  VARCHAR(1) NOT NULL,
-    customer_type   VARCHAR(1) NOT NULL,
-    policy_number   DECIMAL(30) NOT NULL
+DROP TABLE IF EXISTS home_customer;
+
+CREATE TABLE `home_customer` (
+    `customer_id` int(10) NOT NULL AUTO_INCREMENT,
+    `first_name` varchar(50) DEFAULT NULL,
+    `last_name` varchar(50) DEFAULT NULL,
+    `address` varchar(100) DEFAULT NULL,
+    `gender` varchar(1) DEFAULT NULL,
+    `marital_status` varchar(1) DEFAULT NULL,
+    `customer_type` varchar(1) DEFAULT NULL,
+    `policy_number` int(10) default null,
+    primary key (customer_id),
+    key home_insurance_FK (policy_number),
+    constraint home_insurance_detail 
+    foreign key (policy_number) references home_insurance (policy_number)
+) engine=InnoDB auto_increment=1 default charset=latin1;
+
+drop table if exists home_insurance;
+
+create table home_insurance (
+    `policy_number` int(10) not null auto_increment,
+    `insurance_status` varchar(1) default null,
+    `start_date` datetime default null,
+    `end_date` datetime default null,
+    `premium_amount` double default null,
+
+    primary key (policy_number)
 );
 
-ALTER TABLE auto_customer ADD CONSTRAINT auto_customer_pk PRIMARY KEY ( customer_id );
+drop table if exists home_insured
 
-CREATE TABLE auto_installment_payment (
-    transaction_number  DECIMAL(30) NOT NULL,
-    payment_date        DATETIME NOT NULL,
-    method_of_payment   VARCHAR(6) NOT NULL COMMENT 'paypal, credit, debit, check',
-    invoice_number      DECIMAL(20) NOT NULL
-);
+create table home_insured (
+    `home_id` int(10) not null auto_increment,
+    `purchase_date` datetime default null,
+    `purchase_value` double default null,
+    `home_area` double default null,
+    `type_of_home` varchar(1) default null,
+    `auto_fire_notification` int(1) default null, 
+    `home_security_system` int(1) default null,
+    `swimming_pool` varchar(2) default null,
+    `basement` int(1) default null,
+    `policy_number` int(10) not null,
 
+    primary key (home_id),
 
-ALTER TABLE auto_installment_payment ADD CONSTRAINT auto_payment_pk PRIMARY KEY ( transaction_number );
+    key policy_number (policy_number),
+    constraint home_insured_FK foreign key (policy_number) references home_insurance(policy_number)
+    on delete no action on update no action
+)engine=InnoDB auto_increment=1 default charset=latin1;
 
-CREATE TABLE auto_insurance_invoice (
-    invoice_number      DECIMAL(20) NOT NULL,
-    invoice_amount      DOUBLE NOT NULL,
-    payment_due_date    DATETIME NOT NULL,
-    policy_number       DECIMAL(30) NOT NULL,
-    transaction_number  DECIMAL(30) NOT NULL
-);
+drop table if exists home_invoice;
 
-ALTER TABLE auto_insurance_invoice ADD CONSTRAINT auto_invoice_pk PRIMARY KEY ( invoice_number );
+create table home_invoice (
+    `invoice_number` int(20) not null auto_increment,
+    `invoice_amount` double default null,
+    `payment_due_date` datetime default null,
+    `policy_number` int(10) not null,
+    `transaction_number` int(10) not null,
 
-CREATE TABLE auto_insurance_policy (
-    policy_number          DECIMAL(30) NOT NULL,
-    start_date             DATETIME NOT NULL,
-    end_date               DATETIME NOT NULL,
-    premium_amount         DOUBLE NOT NULL,
-    auto_insurance_status  VARCHAR(1) NOT NULL COMMENT 'C -> current
-P -> expired'
-);
+    primary key (invoice_number),
+    key policy_number (policy_number),
+    constraint home_invoice_FK foreign key (policy_number) references home_insurance(policy_number)
+    on delete no action on update no action,
 
+    key transaction_number (transaction_number),
+    constraint home_payment_FK foreign key (transaction_number) references home_payment (transaction_number)
+)engine=InnoDB auto_increment=1 default charset=latin1;
 
-ALTER TABLE auto_insurance_policy ADD CONSTRAINT auto_insurance_policy_pk PRIMARY KEY ( policy_number );
+drop table if exists home_payment;
 
-CREATE TABLE auto_insured (
-    auto_id        BIGINT NOT NULL,
-    vin_number     VARCHAR(17) NOT NULL,
-    make           VARCHAR(20) NOT NULL,
-    model          VARCHAR(20) NOT NULL,
-    year           VARCHAR(4) NOT NULL,
-    auto_status    VARCHAR(1) NOT NULL COMMENT 'L -> lease
-F -> finance
-O -> ownership',
-    policy_number  DECIMAL(30) NOT NULL
-);
+create table home_payment (
+    `transaction_number` int(20) not null auto_increment,
+    `payment_date` datetime default null,
+    `method_of_payment` varchar(7) default null,
 
-
-ALTER TABLE auto_insured ADD CONSTRAINT auto_insured_pk PRIMARY KEY ( auto_id );
-
-CREATE TABLE driver_under_vehicle (
-    license_number        BIGINT NOT NULL,
-    first_name            VARCHAR(50) NOT NULL,
-    last_name             VARCHAR(50) NOT NULL,
-    birth_date            DATETIME NOT NULL,
-    vin_number            VARCHAR(17) NOT NULL,
-    license_issued_state  VARCHAR(2) NOT NULL,
-    auto_id               BIGINT NOT NULL
-);
-
-ALTER TABLE driver_under_vehicle ADD CONSTRAINT driver_pk PRIMARY KEY ( license_number );
-
-CREATE TABLE home_customer (
-    customer_id     DOUBLE NOT NULL,
-    first_name      VARCHAR(50) NOT NULL,
-    last_name       VARCHAR(50) NOT NULL,
-    address         VARCHAR(100) NOT NULL,
-    gender          VARCHAR(1) COMMENT 'M -> male F -> femail. This field can be optional',
-    marital_status  VARCHAR(1) NOT NULL COMMENT 'M -> married S -> single W -> widow/widower',
-    customer_type   VARCHAR(1) NOT NULL,
-    policy_number   DECIMAL(30) NOT NULL
-);
+    primary key (transaction_number)
+)engine=InnoDB auto_increment=1 default charset=latin1;
 
 
-ALTER TABLE home_customer ADD CONSTRAINT customer_pk PRIMARY KEY ( customer_id );
-
-CREATE TABLE home_installment_payment (
-    transaction_number  DECIMAL(30) NOT NULL,
-    payment_date        DATETIME NOT NULL,
-    method_of_payment   VARCHAR(6) NOT NULL COMMENT 'Paypal, credit, debit, check'
-);
 
 
-ALTER TABLE home_installment_payment ADD CONSTRAINT home_installment_pk PRIMARY KEY ( transaction_number );
-
-CREATE TABLE home_insurance_invoice (
-    invoice_number      DECIMAL(20) NOT NULL,
-    invoice_amount      DOUBLE NOT NULL,
-    payment_due_date    DATETIME NOT NULL,
-    policy_number       DECIMAL(30) NOT NULL,
-    transaction_number  DECIMAL(30) NOT NULL
-);
-
-ALTER TABLE home_insurance_invoice ADD CONSTRAINT home_invoice_pk PRIMARY KEY ( invoice_number );
-
-CREATE TABLE home_insurance_policy (
-    policy_number          DECIMAL(30) NOT NULL,
-    start_date             DATETIME NOT NULL,
-    end_date               DATETIME NOT NULL,
-    premium_amount         DOUBLE NOT NULL,
-    home_insurance_status  VARCHAR(1) NOT NULL COMMENT 'C -> current P -> expired'
-);
 
 
-ALTER TABLE home_insurance_policy ADD CONSTRAINT home_insurance_pk PRIMARY KEY ( policy_number );
 
-CREATE TABLE home_insured (
-    home_id                 BIGINT NOT NULL,
-    purchase_date           DATETIME NOT NULL,
-    purchase_value          DOUBLE NOT NULL,
-    home_area               DOUBLE NOT NULL COMMENT 'in sqrt ft',
-    type_of_home            VARCHAR(1) NOT NULL COMMENT 'S -> single family
-M -> Multifamily
-C -> Condominium
-T -> Town House',
-    auto_fire_notification  TINYINT NOT NULL COMMENT '1 -> There is automatic fire notification to the fire department
-0 -> There is NO fire notification to the fire department',
-    home_security_system    TINYINT NOT NULL COMMENT '1 -> The home security system is installed and monitored 
-0 -> The home security system is not installed or not monitored',
-    swimming_pool           VARCHAR(2) COMMENT 'U -> Underground swimming pool
-O -> Overground swimming pool
-I -> Indoor swimming pool
-M -> Multiple swimming pool
-null -> No swimming pool ',
-    basement                TINYINT NOT NULL COMMENT '1 -> There is a basement
-0 -> There is NO basement',
-    policy_number           DECIMAL(30) NOT NULL
-);
-
-
-ALTER TABLE home_insured ADD CONSTRAINT home_insured_pk PRIMARY KEY ( home_id );
-
-ALTER TABLE auto_customer
-    ADD CONSTRAINT auto_custome_fk FOREIGN KEY ( policy_number )
-        REFERENCES auto_insurance_policy ( policy_number )
-        ON DELETE NO ACTION ON UPDATE NO ACTION
-        AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-
-ALTER TABLE auto_insurance_invoice
-    ADD CONSTRAINT auto_installment_payment_fk FOREIGN KEY ( transaction_number )
-        REFERENCES auto_installment_payment ( transaction_number );
-
-ALTER TABLE auto_insurance_invoice
-    ADD CONSTRAINT auto_insurance_invoice_fk FOREIGN KEY ( policy_number )
-        REFERENCES auto_insurance_policy ( policy_number );
-
-ALTER TABLE auto_insured
-    ADD CONSTRAINT auto_insured_fk FOREIGN KEY ( policy_number )
-        REFERENCES auto_insurance_policy ( policy_number );
-
-ALTER TABLE driver_under_vehicle
-    ADD CONSTRAINT drive_fk FOREIGN KEY ( auto_id )
-        REFERENCES auto_insured ( auto_id );
-
-ALTER TABLE home_insured
-    ADD CONSTRAINT home_insured_fk FOREIGN KEY ( policy_number )
-        REFERENCES home_insurance_policy ( policy_number );
-
-ALTER TABLE home_insurance_invoice
-    ADD CONSTRAINT home_invoice_fk FOREIGN KEY ( policy_number )
-        REFERENCES home_insurance_policy ( policy_number );
-
-ALTER TABLE home_customer
-    ADD CONSTRAINT home_policy_fk FOREIGN KEY ( policy_number )
-        REFERENCES home_insurance_policy ( policy_number );
-
-ALTER TABLE home_insurance_invoice
-    ADD CONSTRAINT payment_home_fk FOREIGN KEY ( transaction_number )
-        REFERENCES home_installment_payment ( transaction_number );
