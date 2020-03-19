@@ -14,7 +14,6 @@ public class AutoPolicy {
     @Column(name = "policy_number")
     private int policyNumber;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "policy_number")
     private InsurancePolicy insurancePolicy;
@@ -36,7 +35,20 @@ public class AutoPolicy {
         return autoUnderPolicy;
     }
 
-    public void setAutoUnderPolicy(List<AutoUnderPolicy> autoUnderPolicy) {
+
+    public void setInsurancePolicy(InsurancePolicy insurancePolicy) {
+        this.insurancePolicy = insurancePolicy;
+    }
+
+    private void setAutoUnderPolicy(List<AutoUnderPolicy> autoUnderPolicy) {
         this.autoUnderPolicy = autoUnderPolicy;
+    }
+
+    private void addNewAutoUnderPolicy(AutoUnderPolicy auto) {
+    }
+
+    public void addNewAuto(AutoUnderPolicy auto) {
+        auto.setAutoPolicy(this);
+        this.autoUnderPolicy.add(auto);
     }
 }

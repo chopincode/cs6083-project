@@ -35,6 +35,12 @@ public class PolicyRestController {
         return policies;
     }
 
+    @GetMapping("/customer/{id}/policy")
+    public List<InsurancePolicy> getCustomerPolicies(@PathVariable int id) {
+        Customer customer = customerService.findById(id);
+        return customer.getInsurancePolicies();
+    }
+
     @GetMapping("/customer/{id}/policy/{policyNumber}")
     public InsurancePolicy getPolicyByPolicyNumber(@PathVariable int id, @PathVariable int policyNumber) {
         Optional<Customer> customerOptional = Optional.ofNullable(customerService.findById(id));
@@ -62,24 +68,18 @@ public class PolicyRestController {
         return ResponseEntity.noContent().build();
     }
 
-//    @PutMapping("/customer/{id}/policy")
-//    public InsurancePolicy updatePolicy(@RequestBody InsurancePolicy policy, @PathVariable int id) {
-//        Customer customer = customerService.findById(id);
-//        List<InsurancePolicy> policies = customer.getInsurancePolicies();
-//        int left = 0, right = policies.size();
-//        while(left < right) {
-//            int mid = left + (right - left) / 2;
-//            if (policies.get(mid).getPolicyNumber() == policy.getPolicyNumber()) {
-//                policies.remove(mid);
-//                policies.add(mid - 1, policy);
-//                break;
-//            } else if (policies.get(mid).getPolicyNumber() < policy.getPolicyNumber()) {
-//                left = mid + 1;
-//            } else {
-//                right = mid;
-//            }
-//        }
-//        customer
-//        customer.setId(id);
-//    }
+    @PutMapping("/customer/{id}/policy/{policyNumber}")
+    public ResponseEntity<?> updatePolicy(@RequestBody InsurancePolicy policy, @PathVariable int id, @PathVariable int policyNumber) {
+        Optional<Customer> customerOptional = Optional.ofNullable(customerService.findById(id));
+        if (!customerOptional.isPresent()) return ResponseEntity.notFound().build();
+
+        Customer customer = customerOptional.get();
+        customer.deleteInsurancePolicy(policyNumber);
+        customer.addInsurancePolicy(policy);
+
+        customer.setId(id);
+        customerService.save(customer);
+
+        return ResponseEntity.noContent().build();
+    }
 }

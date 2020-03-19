@@ -100,4 +100,9 @@ public class AutoUnderPolicy {
     public void setDriver(List<Driver> driver) {
         this.driver = driver;
     }
+
+
+    public void setAutoPolicy(AutoPolicy autoPolicy) {
+        this.autoPolicy = autoPolicy;
+    }
 }

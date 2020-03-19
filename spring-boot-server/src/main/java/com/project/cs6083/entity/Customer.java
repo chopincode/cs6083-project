@@ -101,4 +101,8 @@ public class Customer {
         this.insurancePolicies.add(insurancePolicy);
     }
 
+    public void deleteInsurancePolicy(int policyNumber) {
+        insurancePolicies.removeIf(insurancePolicy -> insurancePolicy.getPolicyNumber() == policyNumber);
+    }
+
 }

@@ -103,7 +103,11 @@ public class InsurancePolicy {
         return autoPolicy;
     }
 
-    public void setAutoPolicy(AutoPolicy autoPolicy) {
+    private void setAutoPolicy(AutoPolicy autoPolicy) {
         this.autoPolicy = autoPolicy;
+    }
+
+    public void setCurAutoPolicy(AutoPolicy autoPolicy) {
+        autoPolicy.setInsurancePolicy(this);
     }
 }
