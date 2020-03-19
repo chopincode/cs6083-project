@@ -1,4 +1,5 @@
-The backend is bootstrapped by Spring Boot and ORM is bootstrapped by MySQL database
+The backend is bootstrapped by Spring Boot and ORM is bootstrapped by MySQL database. Make sure your machine powers Java 8 or higher.
+There is another Node.js version in the client repository. Make sure you have Node.js installed.
 
 ## Available Scripts
 
