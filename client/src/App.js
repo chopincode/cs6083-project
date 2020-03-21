@@ -1,30 +1,62 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useEffect } from "react";
+import "./App.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { getCustomers } from "./action/getCustomer";
+import { getCustomerById } from "./action/getCustomerByID";
+import CustomerCard from "./components/CustomerCard";
+import CustomerForm from "./components/CustomerForm";
 
-function App() {
-  fetch("http://localhost:8080/api/customer")
-    .then(res => res.json())
-    .then(data => console.log(data));
+const App = ({
+  customerList,
+  getCustomers,
+  getCustomerById,
+  customerFormData
+}) => {
+  useEffect(() => {
+    getCustomers();
+  }, [getCustomers]);
+
+  const onClick = event => {
+    getCustomerById(event.target.id);
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <h3>Welcome To WDS Insurance</h3>
+        <p>Click A Customer's Info Card to Edit its information</p>
+        <Switch>
+          <Route path="/" exact>
+            {customerList.map(customer => {
+              return (
+                <div key={customer.id} className="customer-card text-left">
+                  <CustomerCard customer={customer} />
+                  <Link
+                    to="/customerform"
+                    className="btn btn-primary btn-md"
+                    id={customer.id}
+                    onClick={onClick}
+                  >
+                    Edit Info
+                  </Link>
+                </div>
+              );
+            })}
+          </Route>
+          <Route path="/customerform" exact>
+            <CustomerForm customerFormData={customerFormData} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
-export default App;
+const mapStateToProps = state => ({
+  customerList: state.customerList,
+  customerFormData: state.customerInfo
+});
+
+export default connect(mapStateToProps, { getCustomers, getCustomerById })(App);
