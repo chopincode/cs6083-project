@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bbd7abd1-203f-4413-b8e9-5b14e564e345" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/home/HomeInvoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/home/HomePayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/CustomerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/CustomerForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/dao/PolicyRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/InsurancePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/InsurancePolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/auto/AutoInvoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/auto/AutoInvoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/auto/AutoPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/auto/AutoPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/auto/AutoPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/auto/AutoPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/home/HomePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/home/HomePolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/home/HomeUnderPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/entity/home/HomeUnderPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/rest/home/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/rest/home/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/cs6083/service/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/cs6083/service/CustomerServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1ZJz7wIbaOhdwrmZfspLm7M0cpj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Cs6083Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project.cs6083.Cs6083Application" />
+      <module name="cs6083" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project.cs6083.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Cs6083Application" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bbd7abd1-203f-4413-b8e9-5b14e564e345" name="Default Changelist" comment="" />
+      <created>1584571820822</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584571820822</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2462" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1584851293888">
+      <screen x="1680" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1097" y="242" key="#com.intellij.ide.util.MemberChooser/-1851.23.1851.1057/0.23.1680.1027@-1851.23.1851.1057" timestamp="1584661930668" />
+    <state x="2462" y="224" key="#com.intellij.ide.util.MemberChooser/1680.0.1920.1080/0.0.1680.1050@1680.0.1920.1080" timestamp="1584851293888" />
+    <state x="2462" y="224" key="#com.intellij.ide.util.MemberChooser/1680.0.1920.1080/62.23.1618.1027@1680.0.1920.1080" timestamp="1584850723816" />
+    <state x="726" y="236" key="#com.intellij.ide.util.MemberChooser/71.23.1609.1027@71.23.1609.1027" timestamp="1584642259657" />
+    <state width="1807" height="267" key="GridCell.Tab.0.bottom" timestamp="1584851766532">
+      <screen x="65" y="23" width="1615" height="1027" />
+    </state>
+    <state width="1807" height="267" key="GridCell.Tab.0.bottom/-1851.23.1851.1057/0.23.1680.1027@-1851.23.1851.1057" timestamp="1584663534245" />
+    <state width="1807" height="267" key="GridCell.Tab.0.bottom/-1856.23.1856.1057/0.23.1680.1027@-1856.23.1856.1057" timestamp="1584720825817" />
+    <state width="1878" height="267" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1050@1680.0.1920.1080" timestamp="1584851300758" />
+    <state width="1878" height="267" key="GridCell.Tab.0.bottom/1680.0.1920.1080/62.23.1618.1027@1680.0.1920.1080" timestamp="1584850810055" />
+    <state width="1807" height="267" key="GridCell.Tab.0.bottom/65.23.1615.1027@65.23.1615.1027" timestamp="1584851766532" />
+    <state width="1554" height="267" key="GridCell.Tab.0.bottom/68.23.1612.1027@68.23.1612.1027" timestamp="1584644253650" />
+    <state width="1554" height="267" key="GridCell.Tab.0.bottom/71.23.1609.1027@71.23.1609.1027" timestamp="1584643873830" />
+    <state width="1807" height="267" key="GridCell.Tab.0.center" timestamp="1584851766531">
+      <screen x="65" y="23" width="1615" height="1027" />
+    </state>
+    <state width="1807" height="267" key="GridCell.Tab.0.center/-1851.23.1851.1057/0.23.1680.1027@-1851.23.1851.1057" timestamp="1584663534245" />
+    <state width="1807" height="267" key="GridCell.Tab.0.center/-1856.23.1856.1057/0.23.1680.1027@-1856.23.1856.1057" timestamp="1584720825816" />
+    <state width="1878" height="267" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1050@1680.0.1920.1080" timestamp="1584851300756" />
+    <state width="1878" height="267" key="GridCell.Tab.0.center/1680.0.1920.1080/62.23.1618.1027@1680.0.1920.1080" timestamp="1584850810052" />
+    <state width="1807" height="267" key="GridCell.Tab.0.center/65.23.1615.1027@65.23.1615.1027" timestamp="1584851766531" />
+    <state width="1554" height="267" key="GridCell.Tab.0.center/68.23.1612.1027@68.23.1612.1027" timestamp="1584644253649" />
+    <state width="1554" height="267" key="GridCell.Tab.0.center/71.23.1609.1027@71.23.1609.1027" timestamp="1584643873827" />
+    <state width="1807" height="267" key="GridCell.Tab.0.left" timestamp="1584851766530">
+      <screen x="65" y="23" width="1615" height="1027" />
+    </state>
+    <state width="1807" height="267" key="GridCell.Tab.0.left/-1851.23.1851.1057/0.23.1680.1027@-1851.23.1851.1057" timestamp="1584663534244" />
+    <state width="1807" height="267" key="GridCell.Tab.0.left/-1856.23.1856.1057/0.23.1680.1027@-1856.23.1856.1057" timestamp="1584720825815" />
+    <state width="1878" height="267" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1050@1680.0.1920.1080" timestamp="1584851300755" />
+    <state width="1878" height="267" key="GridCell.Tab.0.left/1680.0.1920.1080/62.23.1618.1027@1680.0.1920.1080" timestamp="1584850810051" />
+    <state width="1807" height="267" key="GridCell.Tab.0.left/65.23.1615.1027@65.23.1615.1027" timestamp="1584851766530" />
+    <state width="1554" height="267" key="GridCell.Tab.0.left/68.23.1612.1027@68.23.1612.1027" timestamp="1584644253648" />
+    <state width="1554" height="267" key="GridCell.Tab.0.left/71.23.1609.1027@71.23.1609.1027" timestamp="1584643873826" />
+    <state width="1807" height="267" key="GridCell.Tab.0.right" timestamp="1584851766531">
+      <screen x="65" y="23" width="1615" height="1027" />
+    </state>
+    <state width="1807" height="267" key="GridCell.Tab.0.right/-1851.23.1851.1057/0.23.1680.1027@-1851.23.1851.1057" timestamp="1584663534245" />
+    <state width="1807" height="267" key="GridCell.Tab.0.right/-1856.23.1856.1057/0.23.1680.1027@-1856.23.1856.1057" timestamp="1584720825816" />
+    <state width="1878" height="267" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1050@1680.0.1920.1080" timestamp="1584851300757" />
+    <state width="1878" height="267" key="GridCell.Tab.0.right/1680.0.1920.1080/62.23.1618.1027@1680.0.1920.1080" timestamp="1584850810054" />
+    <state width="1807" height="267" key="GridCell.Tab.0.right/65.23.1615.1027@65.23.1615.1027" timestamp="1584851766531" />
+    <state width="1554" height="267" key="GridCell.Tab.0.right/68.23.1612.1027@68.23.1612.1027" timestamp="1584644253650" />
+    <state width="1554" height="267" key="GridCell.Tab.0.right/71.23.1609.1027@71.23.1609.1027" timestamp="1584643873827" />
+    <state x="-1261" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1584657306842">
+      <screen x="-1851" y="23" width="1851" height="1057" />
+    </state>
+    <state x="-1261" y="250" width="670" height="676" key="search.everywhere.popup/-1851.23.1851.1057/0.23.1680.1027@-1851.23.1851.1057" timestamp="1584657306842" />
+  </component>
+</project>
